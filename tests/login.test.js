@@ -12,7 +12,7 @@ test.describe("Login Tests", () => {
     await page.locator('input[name="password"]').fill(password);
     await page.getByRole("button", { name: "Sign in" }).click();
     await page.waitForSelector("span:has-text('Hello luan')");
-    await page.locator("span").filter({ hasText: "Hello luan" }); // kiểm tra hiển thị thông báo chào mừng "Hello luan"
+    await page.locator("span").filter({ hasText: "Hello luan" }); // check "Hello luan"(firstname of user)
     await expect(page).toHaveURL(/.*\/us\/account/);
   });
   test("Login with an invalid username and password", async ({ page }) => {
