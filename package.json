@@ -2,8 +2,7 @@
   "dependencies": {
     "@faker-js/faker": "^9.4.0",
     "@playwright/test": "^1.50.1",
-    "dotenv": "^16.4.7",
-    "playwright": "^1.50.1"
+    "dotenv": "^16.4.7"
   },
   "scripts": {
     "test": "npx playwright test"

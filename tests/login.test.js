@@ -11,9 +11,8 @@ test.describe("Login Tests", () => {
       .fill(username);
     await page.locator('input[name="password"]').fill(password);
     await page.getByRole("button", { name: "Sign in" }).click();
-    await page.waitForSelector("span:has-text('Hello luan')");
-    await page.locator("span").filter({ hasText: "Hello luan" }); // check "Hello luan"(firstname of user)
-    await expect(page).toHaveURL(/.*\/us\/account/);
+    await expect(page.getByRole("heading", { name: "Profile" })).toBeVisible();
+    await expect(page).toHaveURL(/.*\/us\/account/); // kiểm tra URL có chứa /us/account, header có chứa "Profile"
   });
   test("Login with an invalid username and password", async ({ page }) => {
     // testcase đăng nhập với username và password không hợp lệ
@@ -33,7 +32,7 @@ test.describe("Login Tests", () => {
     await page.getByRole("link", { name: "Account" }).click();
     await page.getByRole("button", { name: "Sign in" }).click();
     const errorMessage = await emailInput.evaluate(
-      (el) => el.validationMessage // lấy thông báo lỗi khi không nhập username và password
+      (el) => el.validationMessage // lấy thông báo lỗi khi không nhập username và password từ trường email
     );
     console.log("ErrorMessage:", errorMessage);
     await expect(errorMessage).toMatch(/fill out this field/i);
