@@ -1,4 +1,4 @@
-// StorePage.js
+// cartPage.js
 const { expect } = require("@playwright/test");
 class StorePage {
   constructor(page) {
