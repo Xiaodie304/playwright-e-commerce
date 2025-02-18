@@ -2,10 +2,11 @@
   "dependencies": {
     "@faker-js/faker": "^9.4.0",
     "@playwright/test": "^1.50.1",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "nodemailer": "^6.10.0"
   },
   "scripts": {
-    "playwright": "playwright",
-    "test": "playwright test"
+    "test": "playwright test",
+    "sendmail": "node sendmail/sendMail.js"
   }
 }
