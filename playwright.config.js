@@ -3,7 +3,7 @@ const { defineConfig } = require("@playwright/test");
 
 module.exports = defineConfig({
   use: {
-    headless: true,
+    headless: true, // Chạy ở chế độ headless( không có giao diện) -> false để hiển thị giao diện
     viewport: { width: 1366, height: 768 },
     screenshot: "only-on-failure",
     video: "retain-on-failure",
