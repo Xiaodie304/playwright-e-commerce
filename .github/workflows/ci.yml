@@ -29,6 +29,27 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install
 
+      - name: Install dependencies for WebKit # Only for WebKit
+        run: sudo apt-get update && sudo apt-get install -y \
+          libgtk-4-1 \
+          libgraphene-1.0-0 \
+          libwoff2dec1 \
+          libvpx6 \
+          libevent-2.1-7 \
+          libopus0 \
+          libgst-plugins-base1.0-0 \
+          libgst-plugins-good1.0-0 \
+          libgstreamer1.0-0 \
+          libgstvideo-1.0-0 \
+          libflite1 \
+          libavif0 \
+          libharfbuzz-icu0 \
+          libsecret-1-0 \
+          libhyphen0 \
+          libmanette-0.2-0 \
+          libgles2 \
+          libx264-155
+
       - name: Run tests
         env:
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
