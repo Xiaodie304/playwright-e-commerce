@@ -32,7 +32,15 @@ Run a specific test:<pre>npm run test tests/login.test.js</pre>
 
 ⚙️ Configuration
 
-- Modify test settings in playwright.config.js
+- Modify test settings in playwright.config.js  
+  Example: To reduce the number of workers if your machine is not very powerful, you can modify the workers setting in playwright.config.js like this:<pre>// playwright.config.js
+  module.exports = {
+  // Other configurations...
+  // Set the number of workers to 1 for machines with low resources
+  workers: 1,  
+  // Other configurations...
+  };</pre>
+
 - Environment variables can be set in .env
 
 <pre>
