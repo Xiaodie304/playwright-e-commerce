@@ -1,13 +1,15 @@
 # playwright-e-commerce
 
-📌 Features  
+📌 Features
+
 ✅ End-to-end tests for critical user flows (login, checkout, cart, etc.)  
 ✅ Cross-browser testing (Chromium, Firefox, WebKit, Mobile Viewport)  
 ✅ Headless & UI mode execution  
 ✅ Parallel test execution  
 ✅ CI/CD integration
 
-📝 Registration Notice  
+📝 Registration Notice
+
 If you haven't registered an account for testing yet, please sign up at [MedusaJS Demo Site](https://demo.medusajs.com) to start testing.
 
 🚀 Installation
@@ -18,14 +20,11 @@ git clone https://github.com/Xiaodie304/playwright-e-commerce.git
 npm install
 npx playwright install</pre>
 
-🔥 Running Tests  
-Run all tests:
+🔥 Running Tests
 
-<pre>npm run test</pre>
+Run all tests:<pre>npm run test</pre>
 
-Run a specific test:
-
-<pre>npm run test tests/login.test.js</pre>
+Run a specific test:<pre>npm run test tests/login.test.js</pre>
 
 📊 Generate Report
 
