@@ -37,6 +37,7 @@ jobs:
         run: npm test
 
       - name: Zip Playwright report
+        continue-on-error: true
         run: zip -r playwright-report.zip playwright-report/
 
       - name: Send email notification
@@ -44,4 +45,5 @@ jobs:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
+        continue-on-error: true
         run: node sendmail/sendMail.js

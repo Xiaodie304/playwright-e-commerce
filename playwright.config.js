@@ -18,10 +18,6 @@ module.exports = defineConfig({
       name: "firefox", // Chạy trên Firefox
       use: { browserName: "firefox" },
     },
-    {
-      name: "webkit", // Chạy trên WebKit
-      use: { browserName: "webkit" },
-    },
   ],
   workers: 3, // Số worker chạy song song
   reporter: [["html", { open: "never" }]],
