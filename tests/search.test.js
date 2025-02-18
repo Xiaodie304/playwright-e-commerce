@@ -34,4 +34,25 @@ test.describe("Medusa Store Search Tests", () => {
     // Kiểm tra xem có thông báo "No results found" hay không
     await expect(page.getByText("No results found")).toBeVisible();
   });
+  test("Medusa store search and add to cart", async ({ page }) => {
+    await page.goto("/us");
+    await expect(
+      page.getByRole("heading", { name: "Ecommerce Starter Template" })
+    ).toBeVisible();
+    await page.getByRole("link", { name: "Search" }).click();
+    await page
+      .getByRole("searchbox", { name: "Search products..." })
+      .fill("Pinnacle Posh Pack");
+    await page.getByRole("link", { name: "Pinnacle Posh Pack" }).click();
+    await expect(
+      page.getByRole("heading", { name: "Pinnacle Posh Pack" })
+    ).toBeVisible();
+    await page.getByRole("button", { name: "Black" }).click();
+    await expect(
+      page.getByRole("button", { name: "Add to cart" })
+    ).toBeVisible();
+    await page.getByRole("button", { name: "Add to cart" }).click();
+    await page.getByRole("button", { name: "Go to cart" }).click();
+    await expect(page.getByRole("heading", { name: "Summary" })).toBeVisible();
+  });
 });
