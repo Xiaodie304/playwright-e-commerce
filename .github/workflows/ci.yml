@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Playwright browsers
+        run: npx playwright install
+
       - name: Run tests
         env:
           TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
