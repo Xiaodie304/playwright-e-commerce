@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test");
 const LoginPage = require("../pages/LoginPage"); // import LoginPage
-const StorePage = require("../pages/storePage"); // import StorePage
+const StorePage = require("../pages/StorePage"); // import StorePage
 let context;
 let page;
 test.beforeAll(async ({ browser }) => {
