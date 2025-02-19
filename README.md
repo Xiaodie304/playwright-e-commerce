@@ -79,17 +79,27 @@ Note: Don't commit .env to Git for security reasons! Add it to .gitignore.
 
 <pre>
 PLAYWRIGHT-E-COMMERCE/
-├── .github/workflows/  # CI/CD configurations
-├── test-data/          # Test data files
-├── locators/           # Page element locators
-├── pages/              # Page Object Model (POM) classes
-├── sendmail/           # Email notifications
-├── tests/              # Automated test scripts
-├── utils/              # Helper functions
+├── .github/workflows/   # CI/CD configurations
+├── locators/            # Page element locators
+├── node_modules/        # Installed dependencies
+├── pages/               # Page Object Model (POM) classes
+├── playwright-report/   # Playwright test report (generated)
+├── sendmail/            # Email notifications
+├── test-data/           # Test data files
+├── test-results/        # Test execution results
+├── tests/               # Automated test scripts
+├── utils/               # Helper functions
+├── .dockerignore        # Ignore unnecessary files in Docker
+├── .env                 # Environment variables (DO NOT commit this)
+├── .gitignore           # Ignore unnecessary files in Git (ensure .env, node_modules,... is ignored)
+├── Dockerfile           # Docker setup
+├── Jenkinsfile          # Jenkins pipeline configuration
+├── LICENSE.md           # License information
+├── README.md            # Project documentation
+├── package.json         # Node.js dependencies and scripts
+├── package-lock.json    # Locked dependency versions
 ├── playwright.config.js # Playwright test configuration
-├── Dockerfile          # Docker setup
-├── Jenkinsfile         # Jenkins pipeline configuration
-├── README.md           # Project documentation
+├── state.json           # Playwright saved state (if used)
 </pre>
 
 🐳 Docker Setup
