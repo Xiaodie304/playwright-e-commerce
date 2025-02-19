@@ -16,5 +16,8 @@ COPY . .
 # Cài Playwright dependencies
 RUN npx playwright install --with-deps
 
+# Cài thêm zip để nén report
+RUN apt-get update && apt-get install -y --no-install-recommends zip && rm -rf /var/lib/apt/lists/*
+
 # Chạy test khi container khởi động, sau đó zip report và gửi mail
 CMD ["sh", "-c", "npm test; zip -r playwright-report.zip playwright-report/; node sendmail/sendMail.js"]
