@@ -14,6 +14,14 @@ module.exports = defineConfig({
       name: "chromium", // Chạy trên Chromium
       use: { browserName: "chromium" },
     },
+    {
+      name: "firefox", // Chạy trên Firefox
+      use: { browserName: "firefox" },
+    },
+    {
+      name: "webkit", // Chạy trên WebKit
+      use: { browserName: "webkit" },
+    },
   ],
   workers: 3, // Số worker chạy song song
   reporter: [["html", { open: "never" }]],
