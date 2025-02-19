@@ -1,12 +1,12 @@
-# playwright-e-commerce
+# E-Commerce Automation with Playwright
 
 📌 Features
 
-✅ End-to-end tests for critical user flows (login, checkout, cart, etc.)  
-✅ Cross-browser testing (Chromium, Firefox, WebKit, Mobile Viewport)  
-✅ Headless & UI mode execution  
-✅ Parallel test execution  
-✅ CI/CD integration
+✅ End-to-end tests for critical user flows (login, checkout, cart, etc.).  
+✅ Cross-browser testing (Chromium, Firefox, WebKit, Mobile Viewport).  
+✅ Headless & UI mode execution.  
+✅ Parallel test execution.  
+✅ CI/CD integration.
 
 📝 Registration Notice
 
@@ -26,9 +26,13 @@ Run all tests:<pre>npm run test</pre>
 
 Run a specific test:<pre>npm run test tests/login.test.js</pre>
 
-📊 Generate Report
+📊 Playwright Report
 
 <pre>npx playwright show-report</pre>
+
+After running tests, you can view the Playwright report:
+
+![Playwright Test Report](test-data/Screenshot-report.png)
 
 ⚙️ Configuration
 
@@ -37,13 +41,15 @@ Run a specific test:<pre>npm run test tests/login.test.js</pre>
   module.exports = {
   // Other configurations...
   // Set the number of workers to 1 for machines with low resources
-  workers: 1,  
+  workers: 1,
   // Other configurations...
   };</pre>
 
 - Environment variables can be set in .env
 
 <pre>
+# Example environment variables  
+
 # Test account credentials  
 TEST_USERNAME=demo_user   # Test login username  
 TEST_PASSWORD=demo_pass   # Test login password  
@@ -57,61 +63,41 @@ EMAIL_PASS=abcd1234xyz         # Email app password
 MAIL_TO=receiver@example.com   # Recipient email address  
 </pre>
 
+Note: Don't commit .env to Git for security reasons! Add it to .gitignore.
+
 🛠 Dependencies
 
-- Node.js 22+
-- Playwright (@playwright/test)
-- dotenv (if needed for env configs)
+- Node.js 22+.
+- Playwright (@playwright/test).
+- dotenv (if needed for env configs).
 
 📌 CI/CD
 
-- GitHub Actions / Jenkins integration (if applicable)
+- GitHub Actions / Jenkins integration (if applicable).
 
 📂 Project Structure
 
 <pre>
-├── .github/workflows/  # CI/CD workflow files
-│   ├── ci.yml          # GitHub Actions configuration
-│
+PLAYWRIGHT-E-COMMERCE/
+├── .github/workflows/  # CI/CD configurations
+├── test-data/          # Test data files
 ├── locators/           # Page element locators
-│   ├── locator.js
-│
-├── node_modules/       # Dependencies (auto-generated)
-│
 ├── pages/              # Page Object Model (POM) classes
-│   ├── CartPage.js
-│   ├── LoginPage.js
-│   ├── PaymentPage.js
-│   ├── StorePage.js
-│
-├── playwright-report/  # Playwright test reports
-│   ├── data/
-│   ├── index.html
-│
-├── sendmail/           # Email notification script
-│   ├── sendMail.js
-│
-├── test-results/       # Test execution results
-│   ├── .last-run.json
-│   ├── (test result files)
-│
+├── sendmail/           # Email notifications
 ├── tests/              # Automated test scripts
-│   ├── cart.test.js
-│   ├── login.test.js
-│   ├── mobileLogin.spec.js
-│   ├── payment.test.js
-│   ├── search.test.js
-│   ├── store.test.js
-│
-├── utils/              # Utility/helper functions
-│   ├── DataHelper.js
-│
-├── .env                # Environment variables (ignored in .gitignore)
-├── .gitignore          # Git ignore file
-├── package-lock.json   # Auto-generated dependency lock file
-├── package.json        # Project dependencies & scripts
+├── utils/              # Helper functions
 ├── playwright.config.js # Playwright test configuration
-├── playwright-report.zip # Zipped test reports
+├── Dockerfile          # Docker setup
+├── Jenkinsfile         # Jenkins pipeline configuration
 ├── README.md           # Project documentation
-├── state.json          # State management file
 </pre>
+
+🐳 Docker Setup
+
+1️⃣ Build the Docker image
+
+<pre>docker build -t playwright-ecommerce .</pre>
+
+2️⃣ Run tests inside the container
+
+<pre>docker run --rm -it playwright-ecommerce</pre>
