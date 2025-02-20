@@ -20,20 +20,6 @@ cd playwright-e-commerce
 npm install
 npx playwright install</pre>
 
-🔥 Running Tests
-
-Run all tests:<pre>npm run test</pre>
-
-Run a specific test:<pre>npm run test tests/login.test.js</pre>
-
-📊 Playwright Report
-
-<pre>npx playwright show-report</pre>
-
-After running tests, you can view the Playwright report:
-
-![Playwright Test Report](test-data/Screenshot-report.png)
-
 ⚙️ Configuration
 
 - Modify test settings in playwright.config.js  
@@ -53,10 +39,8 @@ After running tests, you can view the Playwright report:
 # Test account credentials  
 TEST_USERNAME=demo_user   # Test login username  
 TEST_PASSWORD=demo_pass   # Test login password  
-
 # Target website URL  
 BASE_URL=https://demo.medusajs.com   # Website under test  
-
 # Email configuration for notifications  
 EMAIL_USER=testemail@gmail.com # Sender email account  
 EMAIL_PASS=abcd1234xyz         # Email app password  
@@ -64,6 +48,20 @@ MAIL_TO=receiver@example.com   # Recipient email address
 </pre>
 
 Note: Don't commit .env to Git for security reasons! Add it to .gitignore.
+
+🔥 Running Tests
+
+Run all tests:<pre>npm run test</pre>
+
+Run a specific test:<pre>npm run test tests/login.test.js</pre>
+
+📊 Playwright Report
+
+<pre>npx playwright show-report</pre>
+
+After running tests, you can view the Playwright report:
+
+![Playwright Test Report](test-data/Screenshot-report.png)
 
 🛠 Dependencies
 
