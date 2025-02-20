@@ -23,29 +23,32 @@ npx playwright install</pre>
 ⚙️ Configuration
 
 - Modify test settings in playwright.config.js  
-  Example: To reduce the number of workers if your machine is not very powerful, you can modify the workers setting in playwright.config.js like this:<pre>// playwright.config.js
-  module.exports = {
-  // Other configurations...
-  // Set the number of workers to 1 for machines with low resources
-  workers: 1,
-  // Other configurations...
-  };</pre>
+Example: To reduce the number of workers if your machine is not very powerful, you can modify the workers setting in playwright.config.js like this:
+<pre>// playwright.config.js
+module.exports = {
+// Other configurations...
+// Set the number of workers to 1 for machines with low resources
+workers: 1,
+// Other configurations...
+};</pre>
 
 - Environment variables can be set in .env
+<pre># Example environment variables
 
-<pre>
-# Example environment variables  
+# Test account credentials
 
-# Test account credentials  
-TEST_USERNAME=demo_user   # Test login username  
-TEST_PASSWORD=demo_pass   # Test login password  
-# Target website URL  
-BASE_URL=https://demo.medusajs.com   # Website under test  
-# Email configuration for notifications  
+TEST_USERNAME=demo_user # Test login username  
+TEST_PASSWORD=demo_pass # Test login password
+
+# Target website URL
+
+BASE_URL=https://demo.medusajs.com # Website under test
+
+# Email configuration for notifications
+
 EMAIL_USER=testemail@gmail.com # Sender email account  
-EMAIL_PASS=abcd1234xyz         # Email app password  
-MAIL_TO=receiver@example.com   # Recipient email address  
-</pre>
+EMAIL_PASS=abcd1234xyz # Email app password  
+MAIL_TO=receiver@example.com # Recipient email address</pre>
 
 Note: Don't commit .env to Git for security reasons! Add it to .gitignore.
 
