@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const path = require("path");
+const fs = require("fs");
 require("dotenv").config();
 async function sendMail() {
   let transporter = nodemailer.createTransport({
@@ -10,6 +11,10 @@ async function sendMail() {
     },
   });
   const filePath = path.join(__dirname, "../playwright-report.zip");
+  if (!fs.existsSync(filePath)) {
+    console.log("File does not exist:", filePath);
+    return;
+  }
   const fileName = "playwright-report.zip";
   const mailOptions = {
     from: process.env.EMAIL_USER,
