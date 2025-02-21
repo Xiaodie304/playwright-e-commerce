@@ -1,6 +1,6 @@
 //PaymentPage.js
 const { expect } = require("@playwright/test");
-const { faker } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker"); // Sử dụng fakerjs để tạo dữ liệu giả
 class PaymentPage {
   constructor(page) {
     this.page = page;
@@ -35,7 +35,6 @@ class PaymentPage {
 
   // Mở Store Page và xác minh phần tử "All products"
   async openStorePageAndVerify() {
-    await this.page.context().storageState({ path: "state.json" });
     await this.page.goto("/us");
     await this.menuButton.click();
     await this.storeLink.click();
@@ -63,6 +62,11 @@ class PaymentPage {
     await this.email.fill(faker.internet.email());
     await this.province.fill(faker.location.state());
     await this.page.getByRole("combobox").selectOption("United States");
+  }
+
+  async goToCheckoutAndVerify() {
+    await this.page.getByRole("button", { name: "Go to checkout" }).click();
+    await this.page.getByRole("heading", { name: "In your Cart" }).isVisible();
   }
 }
 

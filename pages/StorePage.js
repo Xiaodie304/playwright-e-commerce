@@ -1,5 +1,5 @@
-// StorePage.js
 const { expect } = require("@playwright/test");
+
 class StorePage {
   constructor(page) {
     this.page = page;
@@ -10,16 +10,16 @@ class StorePage {
     });
     this.productPrice = page.locator(
       "p.font-normal.font-sans.txt-medium.text-ui-fg-interactive"
-    ); // locator giá sản phẩm
+    );
   }
-  // Phương thức mở Store Page và xác minh phần tử "All products"
+  // Mở trang cửa hàng và kiểm tra
   async openStorePageAndVerify() {
-    // Khôi phục trạng thái session
-    await this.page.context().storageState({ path: "state.json" });
     await this.page.goto("/us");
-    await this.menuButton.click(); // Mở menu
-    await this.storeLink.click(); // Vào Store
-    await expect(this.allProductsHeading).toBeVisible(); // Kiểm tra tiêu đề
+    if (await this.menuButton.isVisible()) {
+      await this.menuButton.click();
+    }
+    await this.storeLink.click();
+    await expect(this.allProductsHeading).toBeVisible();
   }
 }
 

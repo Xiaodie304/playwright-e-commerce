@@ -1,6 +1,7 @@
-// cartPage.js
 const { expect } = require("@playwright/test");
+
 class StorePage {
+  // Tạo class StorePage
   constructor(page) {
     this.page = page;
     this.menuButton = page.getByRole("button", { name: "Menu" });
@@ -8,23 +9,27 @@ class StorePage {
     this.allProductsHeading = page.getByRole("heading", {
       name: "All products",
     });
-    this.productThumbnail = page.getByRole("link", {
-      name: "Thumbnail BlendMaster Elite",
-    }); // Add product thumbnail locator
+    this.productPrice = page.locator(
+      "p.font-normal.font-sans.txt-medium.text-ui-fg-interactive"
+    );
+    this.euButton = page.getByRole("button", { name: "EU" });
+    this.addToCartButton = page.getByRole("button", { name: "Add to cart" });
+    this.goToCartButton = page.getByRole("button", { name: "Go to cart" });
   }
-
-  // Phương thức mở Store Page và xác minh phần tử "All products"
+  // Mở trang cửa hàng và kiểm tra
   async openStorePageAndVerify() {
-    // Khôi phục trạng thái session
-    await this.page.context().storageState({ path: "state.json" });
     await this.page.goto("/us");
-    await this.menuButton.click(); // Mở menu
-    await this.storeLink.click(); // Vào Store
+    if (await this.menuButton.isVisible()) {
+      await this.menuButton.click();
+    }
+    await this.storeLink.click();
     await expect(this.allProductsHeading).toBeVisible();
-    await this.productThumbnail.click(); // Click vào sản phẩm
-    await expect(
-      this.page.getByRole("heading", { name: "BlendMaster Elite Fusionator" })
-    ).toBeVisible();
+  }
+  // Thêm sản phẩm vào giỏ hàng
+  async addItemToCart() {
+    await this.euButton.click();
+    await this.addToCartButton.click();
+    await this.goToCartButton.click();
   }
 }
 
