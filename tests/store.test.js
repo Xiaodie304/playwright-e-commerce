@@ -14,22 +14,25 @@ test.beforeAll(async ({ browser }) => {
   await page.waitForLoadState("networkidle");
 
   await context.storageState({ path: "state.json" });
+});
+
+test.afterAll(async () => {
   await context.close();
 });
 
 test.describe("Store Page", () => {
   let storePage;
 
-  test.beforeEach(async ({ browser }) => {
-    context = await browser.newContext({ storageState: "state.json" });
+  test.beforeEach(async () => {
     page = await context.newPage();
     storePage = new StorePage(page);
     await storePage.openStorePageAndVerify();
   });
 
   test.afterEach(async () => {
-    await context.close();
+    await page.close();
   });
+
   test("Verify product page elements and product details", async () => {
     // testcase kiểm tra các phần tử trên trang sản phẩm và chi tiết sản phẩm
     await page

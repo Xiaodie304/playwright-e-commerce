@@ -7,32 +7,33 @@ let context;
 let page;
 
 test.beforeAll(async ({ browser }) => {
-  context = await browser.newContext(); // Tạo mới context
-  page = await context.newPage(); // Tạo mới trang
-  const loginPage = new LoginPage(page); // Khởi tạo trang login
+  context = await browser.newContext(); // Giữ context để tái sử dụng
+  page = await context.newPage();
+  const loginPage = new LoginPage(page);
 
   await loginPage.login(process.env.TEST_USERNAME, process.env.TEST_PASSWORD);
   await page.waitForLoadState("networkidle");
 
-  await context.storageState({ path: "state.json" }); // Lưu trạng thái của trang
-  await context.close();
+  await context.storageState({ path: "state.json" });
+});
+
+test.afterAll(async () => {
+  await context.close(); // Đóng context sau khi tất cả test chạy xong
 });
 
 test.describe("Shopping Cart", () => {
   let storePage;
   let cartPage;
 
-  test.beforeEach(async ({ browser }) => {
-    context = await browser.newContext({ storageState: "state.json" }); // Khôi phục trạng thái trước đó
-    page = await context.newPage(); // Mở trang mới
-    storePage = new StorePage(page); // Khởi tạo trang store
-    cartPage = new CartPage(page); // Khởi tạo trang cart
-    await storePage.openStorePageAndVerify(); // Mở trang store và kiểm tra
+  test.beforeEach(async () => {
+    page = await context.newPage(); // Chỉ mở page mới, không tạo lại context
+    storePage = new StorePage(page);
+    cartPage = new CartPage(page);
+    await storePage.openStorePageAndVerify();
   });
 
   test.afterEach(async () => {
     await page.close();
-    await context.close();
   });
 
   test("Add product to cart successfully", async () => {

@@ -17,7 +17,7 @@ test.beforeAll(async ({ browser }) => {
   await context.close();
 });
 
-test.describe("Product Page Tests", () => {
+test.describe("Payment Page", () => {
   let paymentProcess;
 
   test.beforeEach(async ({ browser }) => {
