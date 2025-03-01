@@ -22,7 +22,7 @@ test.describe("Payment Page", () => {
 
   test.beforeEach(async ({ browser }) => {
     context = await browser.newContext({ storageState: "state.json" });
-    page = await context.newPage();
+    page = await context.newPage(); // Mở context mới, mở trang mới, load state.json
     paymentProcess = new PaymentPage(page);
     await paymentProcess.openStorePageAndVerify();
     await paymentProcess.addProductToCart();
