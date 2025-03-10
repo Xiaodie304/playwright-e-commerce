@@ -31,14 +31,21 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh "docker run --name $CONTAINER_NAME --env-file .env $IMAGE_NAME || true"
+                sh "docker run --name $CONTAINER_NAME $IMAGE_NAME"
             }
         }
+    }
 
-        stage('Cleanup') {
-            steps {
-                sh "docker rm -f $CONTAINER_NAME || true && docker rmi -f $IMAGE_NAME || true"
-            }
+    post {
+        always {
+            sh "docker rm -f $CONTAINER_NAME || true"
+            sh "docker rmi $IMAGE_NAME || true"
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed!'
         }
     }
 }
